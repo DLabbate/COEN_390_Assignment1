@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">COEN390_Assignment1</string>
+    <string name="checkGradesText">Check My Grades</string>
+    <string name="action_edit">Edit</string>
+    <string name="age_display_textview">Age</string>
+    <string name="name_display_textview">Name</string>
+    <string name="student_ID_textview">Student ID</string>
+    <string name="profile_name_key">profileName</string>
+    <string name="profile_age_key">profileAge</string>
+    <string name="student_id_key">studentID</string>
+</resources>
