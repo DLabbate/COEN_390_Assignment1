@@ -3,6 +3,8 @@ package com.example.coen390_assignment1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 public class gradeActivity extends AppCompatActivity {
 
@@ -13,9 +15,11 @@ public class gradeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    //To do
-    //create list view
-    //test
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.grade_menu,menu);
+        return super.onCreateOptionsMenu(menu);
 
-
+    }
 }
