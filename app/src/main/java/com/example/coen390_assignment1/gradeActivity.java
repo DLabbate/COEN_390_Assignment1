@@ -9,10 +9,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class gradeActivity extends AppCompatActivity {
 
-    ArrayList<String> testdata;
+    ArrayList<Course> testdata;
     RecyclerView graderecyclerView; //Recycler View
     RecyclerView.LayoutManager gradeLayoutManager; //Layout Manager
     RecyclerView.Adapter gradeAdapter; //Adapter
@@ -27,10 +28,10 @@ public class gradeActivity extends AppCompatActivity {
         gradeLayoutManager = new LinearLayoutManager(this);
         //Linear Layout. Can use 2D Grid instead if we want
 
-        testdata = new ArrayList<String>();
-        testdata.add("TEST1");
-        testdata.add("TEST2");
-        testdata.add("TEST3");
+        testdata = new ArrayList<Course>();
+        //testdata.add("TEST1");
+        //testdata.add("TEST2");
+        //testdata.add("TEST3");
 
         gradeAdapter = new gradeAdapter(testdata);
         graderecyclerView.setLayoutManager(gradeLayoutManager);
@@ -42,5 +43,17 @@ public class gradeActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.grade_menu,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Random random = new Random();
+        int numCourses = random.nextInt(5) + 1; //Range 1-5
+        for (int i = 0; i < numCourses; i++)
+        {
+            testdata.add(Course.generateRandomCourse());
+        }
     }
 }

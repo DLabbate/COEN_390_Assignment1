@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> {
 
-    ArrayList<String> gradeList;
-    gradeAdapter(ArrayList<String> gradeList)
+    ArrayList<Course> gradeList;
+    gradeAdapter(ArrayList<Course> gradeList)
     {
         this.gradeList = gradeList;
     }
@@ -29,8 +29,17 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.courseText.setText(gradeList.get(position));
-        holder.assignmentText.setText(gradeList.get(position));
+        Course course = gradeList.get(position);
+        ArrayList<Assignment> assignments = course.getAssignments();
+        holder.courseText.setText(course.getCourseTitle());
+        StringBuilder assignmentText = new StringBuilder();
+        for (int i = 0; i < assignments.size(); i++)
+        {
+            assignmentText.append(assignments.get(i).getAssignmentTitle()+": ");
+            assignmentText.append(assignments.get(i).getAssignmentGrade()+"\n");
+            assignmentText.append("\n");
+        }
+        holder.assignmentText.setText(assignmentText.toString());
     }
 
     @Override
