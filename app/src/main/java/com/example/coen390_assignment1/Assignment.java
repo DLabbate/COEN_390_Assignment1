@@ -27,4 +27,5 @@ public class Assignment {
     //****get methods*****//
     public String getAssignmentTitle() {return assignmentTitle; }
     public int getAssignmentGrade() {return assignmentGrade;}
+
 }

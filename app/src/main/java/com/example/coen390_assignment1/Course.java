@@ -27,4 +27,44 @@ public class Course {
     //****get methods*****//
     public String getCourseTitle() {return courseTitle;}
     public ArrayList<Assignment> getAssignments() {return assignments;}
+
+    public String getAssignmentsString()
+    {
+        StringBuilder assignmentStringBuilder = new StringBuilder();
+        if (assignments.size() == 0)
+        {
+            return "Assignment: NaN\n";
+        }
+
+        else
+        {
+            for (int i = 0; i < assignments.size(); i++)
+            {
+                assignmentStringBuilder.append(assignments.get(i).getAssignmentTitle()+": ");
+                assignmentStringBuilder.append(assignments.get(i).getAssignmentGrade()+"\n");
+                assignmentStringBuilder.append("\n");
+            }
+            String average = Double.toString(getAssignmentsAverage());
+            assignmentStringBuilder.append("\nAssignments Average: " + average + "\n");
+            return assignmentStringBuilder.toString();
+        }
+    }
+
+    public double getAssignmentsAverage()
+    {
+        int n = assignments.size();
+        double sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sum += assignments.get(i).getAssignmentGrade();
+        }
+        if (n != 0)
+        {
+            return sum/n;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
