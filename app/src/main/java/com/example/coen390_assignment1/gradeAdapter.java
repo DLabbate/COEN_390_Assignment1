@@ -32,8 +32,24 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
         Course course = gradeList.get(position);
         //ArrayList<Assignment> assignments = course.getAssignments();
         holder.courseText.setText(course.getCourseTitle());
-        String assignmentText = gradeList.get(position).getAssignmentsString();
+        String assignmentText;
+        if (gradeActivity.displayLetterGrades == true)
+        {
+            assignmentText = gradeList.get(position).getAssignmentLetterString();
+        }
+        else
+        {
+            assignmentText = gradeList.get(position).getAssignmentsString();
+        }
         holder.assignmentText.setText(assignmentText);
+        if (gradeActivity.displayLetterGrades == true)
+        {
+            holder.assignmentsAverageText.setText(course.getAssignmentsAverageLetterString());
+        }
+        else
+        {
+            holder.assignmentsAverageText.setText(course.getAssignmentsAverageString());
+        }
     }
 
     @Override
@@ -44,10 +60,12 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView courseText;
         public TextView assignmentText;
+        public TextView assignmentsAverageText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             courseText = itemView.findViewById(R.id.course);
             assignmentText = itemView.findViewById(R.id.assignment);
+            assignmentsAverageText = itemView.findViewById(R.id.assignmentsAverage);
         }
     }
 }

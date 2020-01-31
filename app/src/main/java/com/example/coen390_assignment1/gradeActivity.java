@@ -1,18 +1,23 @@
 package com.example.coen390_assignment1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class gradeActivity extends AppCompatActivity {
 
+    public static boolean displayLetterGrades = false;
     ArrayList<Course> testdata;
     RecyclerView graderecyclerView; //Recycler View
     RecyclerView.LayoutManager gradeLayoutManager; //Layout Manager
@@ -56,4 +61,19 @@ public class gradeActivity extends AppCompatActivity {
             testdata.add(Course.generateRandomCourse());
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case(R.id.showGrades):
+                gradeActivity.displayLetterGrades = !(gradeActivity.displayLetterGrades) ;
+                Log.d("MyActivity","********************Converted Grades***********************");
+                Log.d("MyActivity",Boolean.toString(displayLetterGrades));
+                gradeAdapter.notifyDataSetChanged();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

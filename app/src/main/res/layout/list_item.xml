@@ -28,4 +28,14 @@
         android:paddingStart="5dp"
         android:paddingEnd="5dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/assignmentsAverage"
+        android:textColor="@color/colorAccent"
+        android:text="ASSIGNMENT AVERAGE"
+        android:paddingTop="0dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"/>
+
 </LinearLayout>
