@@ -30,16 +30,26 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Course course = gradeList.get(position);
-        ArrayList<Assignment> assignments = course.getAssignments();
+        //ArrayList<Assignment> assignments = course.getAssignments();
         holder.courseText.setText(course.getCourseTitle());
-        StringBuilder assignmentText = new StringBuilder();
-        for (int i = 0; i < assignments.size(); i++)
+        String assignmentText;
+        if (gradeActivity.displayLetterGrades == true)
         {
-            assignmentText.append(assignments.get(i).getAssignmentTitle()+": ");
-            assignmentText.append(assignments.get(i).getAssignmentGrade()+"\n");
-            assignmentText.append("\n");
+            assignmentText = gradeList.get(position).getAssignmentLetterString();
         }
-        holder.assignmentText.setText(assignmentText.toString());
+        else
+        {
+            assignmentText = gradeList.get(position).getAssignmentsString();
+        }
+        holder.assignmentText.setText(assignmentText);
+        if (gradeActivity.displayLetterGrades == true)
+        {
+            holder.assignmentsAverageText.setText(course.getAssignmentsAverageLetterString());
+        }
+        else
+        {
+            holder.assignmentsAverageText.setText(course.getAssignmentsAverageString());
+        }
     }
 
     @Override
@@ -50,10 +60,12 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView courseText;
         public TextView assignmentText;
+        public TextView assignmentsAverageText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             courseText = itemView.findViewById(R.id.course);
             assignmentText = itemView.findViewById(R.id.assignment);
+            assignmentsAverageText = itemView.findViewById(R.id.assignmentsAverage);
         }
     }
 }
