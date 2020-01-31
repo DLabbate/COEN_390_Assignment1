@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    protected Profile userProfile;
     protected EditText nameEditText;
     protected EditText ageEditText;
     protected EditText studentID_EditText;
@@ -36,10 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        userProfile = sharedpreferenceshelper.getProfile();
         updateUI();
-        updateEditTexts();
-        //This makes sure the EditText will always display the profile name when onStart() is called
-
+        updateEditTexts(); //This makes sure the EditText will always display the profile name when onStart() is called
     }
 
     private void setupUI() //Links references to view id's
@@ -55,27 +55,31 @@ public class ProfileActivity extends AppCompatActivity {
         saveProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveInfo();
-                makeToast("Saved");
-                sharedpreferenceshelper.saveEditMode(false);
-                editMode = false;
-                updateUI();
-                saveProfileButton.setVisibility(View.GONE); //if we want to get rid of button
+                Profile profileCheck = new Profile(nameEditText.getText().toString(),ageEditText.getText().toString(),studentID_EditText.getText().toString());
+                if (Profile.checkValidInput(profileCheck) == true)
+                {
+                    saveInfo();
+                    makeToast("Saved");
+                    sharedpreferenceshelper.saveEditMode(false);
+                    editMode = false;
+                    updateUI();
+                    saveProfileButton.setVisibility(View.GONE); //if we want to get rid of button
+                }
+
+                else
+                {
+                    makeToast("Invalid Input!");
+                }
             }
         });
     }
 
     private void updateEditTexts()
     {
-        nameEditText.setText(sharedpreferenceshelper.getProfileName());
-        ageEditText.setText((sharedpreferenceshelper.getProfileAge()));
-        studentID_EditText.setText(sharedpreferenceshelper.getProfileStudentID());
+        nameEditText.setText(userProfile.getName());
+        ageEditText.setText(userProfile.getAge());
+        studentID_EditText.setText(userProfile.getId());
     }
-
-    //private boolean checkValidInputs()
-    //{
-    //    //TO DO
-    //}
 
     private void makeToast(String message)
     {

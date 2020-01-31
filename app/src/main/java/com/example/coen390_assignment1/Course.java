@@ -29,7 +29,7 @@ public class Course {
     public String getCourseTitle() {return courseTitle;}
     public ArrayList<Assignment> getAssignments() {return assignments;}
 
-    public String getAssignmentsString()
+    public String getAssignmentsStringNumeric() //Returns the assignment information, with grades in NUMERIC format
     {
         StringBuilder assignmentStringBuilder = new StringBuilder();
         if (assignments.size() == 0)
@@ -49,7 +49,7 @@ public class Course {
         }
     }
 
-    public String getAssignmentLetterString()
+    public String getAssignmentLetterString() //Returns the assignment information, with grades in LETTER format
     {
         StringBuilder assignmentStringBuilder = new StringBuilder();
         if (assignments.size() == 0)
@@ -94,7 +94,7 @@ public class Course {
         }
     }
 
-    public double getAssignmentsAverage()
+    public double getAssignmentsAverage() //Returns assignments average (double)
     {
         int n = assignments.size();
         double sum = 0;
@@ -111,5 +111,33 @@ public class Course {
             return 0;
         }
     }
+
+    public String getAssignmentsStringInfo() //Will return assignment grades, either in numeric or letter format
+    {
+        String assignmentText;
+        if (gradeActivity.displayLetterGrades == true)
+        {
+            assignmentText = getAssignmentLetterString();
+        }
+        else
+        {
+            assignmentText = getAssignmentsStringNumeric();
+        }
+
+        return assignmentText;
+    }
+
+    public String getAssignmentsAverageInfo() //Will return assignment grades, either in numeric or letter format
+    {
+        if (gradeActivity.displayLetterGrades == true)
+        {
+            return getAssignmentsAverageLetterString();
+        }
+        else
+        {
+            return getAssignmentsAverageString();
+        }
+    }
+
 
 }

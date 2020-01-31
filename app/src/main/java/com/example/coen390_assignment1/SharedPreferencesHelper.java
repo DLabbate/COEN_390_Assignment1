@@ -36,7 +36,7 @@ public class SharedPreferencesHelper {
 
     public String getProfileName()
     {
-        return sharedPreferences.getString(context.getString(R.string.profile_name_key), null);
+        return sharedPreferences.getString(context.getString(R.string.profile_name_key), "");
     }
 
     public String getProfileAge()
@@ -61,5 +61,15 @@ public class SharedPreferencesHelper {
         return sharedPreferences.getBoolean("editMode",true);
     }
 
+    public void saveProfile(Profile profile) //Takes a profile class as a parameter and saves the name, age and ID in Shared Preferences
+    {
+        saveProfileName(profile.getName());
+        saveProfileAge(profile.getAge());
+        saveProfileStudentID(profile.getId());
+    }
 
+    public Profile getProfile()
+    {
+        return new Profile(getProfileName(),getProfileAge(),getProfileStudentID()); //Takes a reference to the Profile
+    }
 }
