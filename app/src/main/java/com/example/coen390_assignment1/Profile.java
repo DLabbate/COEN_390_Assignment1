@@ -39,13 +39,21 @@ public class Profile {
 
     public static boolean checkValidInput(Profile profile)
     {
-        if (profile.getName().equals(""))                   //Profile name should not be empty
+        if (profile.getName() == null)                          //Profile name should not be null
             return false;
-        else if (profile.getName() == null)
+        else if (profile.getAge() == null)                      //Profile age should not be null
+             return false;
+        else if (profile.getId() == null)                       //Profile ID should not be null
             return false;
-        else if (Integer.parseInt(profile.getAge()) < 18)   //Profile age should be greater than or equal to 18
+        else if (profile.getName().equals(""))                  //Profile name should not be empty
             return false;
-        else if (Integer.parseInt(profile.getAge()) > 99)   //Profile age should be less than or equal to 99
+        else if (profile.getAge().equals(""))                   //Profile age should not be empty
+            return false;
+        else if (profile.getId().equals(""))                    //Profile ID should not be empty
+            return false;
+        else if (Integer.parseInt(profile.getAge()) < 18)       //Profile age should be greater than or equal to 18
+            return false;
+        else if (Integer.parseInt(profile.getAge()) > 99)       //Profile age should be less than or equal to 99
             return false;
         else
             return true;

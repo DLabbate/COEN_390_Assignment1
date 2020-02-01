@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Profile profileCheck = new Profile(nameEditText.getText().toString(),ageEditText.getText().toString(),studentID_EditText.getText().toString());
-                if (Profile.checkValidInput(profileCheck) == true)
+                if (Profile.checkValidInput(profileCheck) == true) //We check if the profile meets the criteria
                 {
                     saveInfo();
                     makeToast("Saved");

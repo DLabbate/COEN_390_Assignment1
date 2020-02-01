@@ -32,26 +32,6 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
         holder.courseText.setText(course.getCourseTitle());
         holder.assignmentText.setText(course.getAssignmentsStringInfo());
         holder.assignmentsAverageText.setText(course.getAssignmentsAverageInfo());
-
-//        if (gradeActivity.displayLetterGrades == true)
-//        {
-//            assignmentText = gradeList.get(position).getAssignmentLetterString();
-//        }
-//        else
-//        {
-//            assignmentText = gradeList.get(position).getAssignmentsStringNumeric();
-//        }
-//        holder.assignmentText.setText(assignmentText);
-//        if (gradeActivity.displayLetterGrades == true)
-//        {
-//            holder.assignmentsAverageText.setText(course.getAssignmentsAverageLetterString());
-//        }
-//        else
-//        {
-//            holder.assignmentsAverageText.setText(course.getAssignmentsAverageString());
-//        }
-
-
     }
 
     @Override
