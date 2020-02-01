@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         profileNameDisplayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedpreferenceshelper.saveEditMode(false);
                 Intent intent = new Intent(MainActivity.this,ProfileActivity.class);
                 startActivity(intent);
             }
