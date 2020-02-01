@@ -58,7 +58,8 @@ public class ProfileActivity extends AppCompatActivity {
                 Profile profileCheck = new Profile(nameEditText.getText().toString(),ageEditText.getText().toString(),studentID_EditText.getText().toString());
                 if (Profile.checkValidInput(profileCheck) == true) //We check if the profile meets the criteria
                 {
-                    saveInfo();
+                    sharedpreferenceshelper.saveProfile(profileCheck);
+                    saveProfile(profileCheck);
                     makeToast("Saved");
                     sharedpreferenceshelper.saveEditMode(false);
                     editMode = false;
@@ -112,6 +113,13 @@ public class ProfileActivity extends AppCompatActivity {
         sharedpreferenceshelper.saveProfileName(nameEditText.getText().toString());
         sharedpreferenceshelper.saveProfileAge(ageEditText.getText().toString());
         sharedpreferenceshelper.saveProfileStudentID(studentID_EditText.getText().toString());
+    }
+
+    private void saveProfile(Profile profile)
+    {
+        sharedpreferenceshelper.saveProfileName(profile.getName());
+        sharedpreferenceshelper.saveProfileAge(profile.getAge());
+        sharedpreferenceshelper.saveProfileStudentID(profile.getId());
     }
 
     private void enableEditTexts() //This function enables all the EditText in the activity
