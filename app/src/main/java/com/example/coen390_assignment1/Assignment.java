@@ -28,7 +28,7 @@ public class Assignment {
     public String getAssignmentTitle() {return assignmentTitle; }
     public int getAssignmentGrade() {return assignmentGrade;}
 
-    public String getAssignmentLetterGrade()
+    public String getAssignmentLetterGrade() //Returns assignment grade as a letter (String)
     {
         if (assignmentGrade>=90)
         {
@@ -100,7 +100,7 @@ public class Assignment {
         }
     }
 
-    public static String convertToLetterGrade(int assignmentGrade)
+    public static String convertToLetterGrade(int assignmentGrade) //Converts an integer grade to a letter grade based on Concordia's rules
     {
         if (assignmentGrade>=90)
         {
@@ -171,10 +171,4 @@ public class Assignment {
             return "NaN";
         }
     }
-
-    //public String getAssignmentLetterGrade()
-    //{
-    //
-    //}
-
 }

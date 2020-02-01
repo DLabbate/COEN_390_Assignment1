@@ -68,7 +68,7 @@ public class SharedPreferencesHelper {
         saveProfileStudentID(profile.getId());
     }
 
-    public Profile getProfile()
+    public Profile getProfile() //Returns a reference to a profile, based on the values saved in SharedPreferences
     {
         return new Profile(getProfileName(),getProfileAge(),getProfileStudentID()); //Takes a reference to the Profile
     }

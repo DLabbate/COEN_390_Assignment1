@@ -69,7 +69,7 @@ public class Course {
         }
     }
 
-    public String getAssignmentsAverageString()
+    public String getAssignmentsAverageString() //Returns assignments average as a String
     {
         StringBuilder stringBuilder = new StringBuilder();
         String average = Double.toString(getAssignmentsAverage());
@@ -77,7 +77,7 @@ public class Course {
         return stringBuilder.toString();
     }
 
-    public String getAssignmentsAverageLetterString()
+    public String getAssignmentsAverageLetterString() //Returns assignments average as a Letter (String)
     {
         if (assignments.size() == 0)
         {
