@@ -8,8 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> {
@@ -32,24 +30,8 @@ public class gradeAdapter extends RecyclerView.Adapter<gradeAdapter.ViewHolder> 
         Course course = gradeList.get(position);
         //ArrayList<Assignment> assignments = course.getAssignments();
         holder.courseText.setText(course.getCourseTitle());
-        String assignmentText;
-        if (gradeActivity.displayLetterGrades == true)
-        {
-            assignmentText = gradeList.get(position).getAssignmentLetterString();
-        }
-        else
-        {
-            assignmentText = gradeList.get(position).getAssignmentsString();
-        }
-        holder.assignmentText.setText(assignmentText);
-        if (gradeActivity.displayLetterGrades == true)
-        {
-            holder.assignmentsAverageText.setText(course.getAssignmentsAverageLetterString());
-        }
-        else
-        {
-            holder.assignmentsAverageText.setText(course.getAssignmentsAverageString());
-        }
+        holder.assignmentText.setText(course.getAssignmentsStringInfo());
+        holder.assignmentsAverageText.setText(course.getAssignmentsAverageInfo());
     }
 
     @Override
